@@ -1,0 +1,56 @@
+paper-button {
+    background: green;
+    color: yellow;
+    border-radius: 10px; 
+}
+
+core-header-panel {
+  height: 100%;
+}
+
+div.welcome {
+	padding-top: 50px;
+	padding-left: 25px;
+}
+
+.tall {
+  height: 150px;
+}
+
+#welcomeToolbar {
+  background-color: #B995ED;
+  color: white;
+  padding: 16px 0px 16px 22px;
+  font-size: xx-large;
+  font-family: sans-serif;
+  /*background: url("images/carbon_intake.png") no-repeat center bottom;*/
+
+}
+
+#mainToolbar {
+  background-color: #ABE35B;
+  color: white;
+  padding: 16px 0px 16px 22px;
+  font-size: xx-large;
+  font-family: sans-serif;
+  align: center;
+
+}
+
+
+core-header-panel#drawerPanel {
+	background-color: #eee;
+}
+
+.learn {
+	padding-left: 10px;
+	font-size: large;
+}
+
+core-header-panel#mainPanel {
+	background-color: #E6E4EB;
+}
+
+.selected {
+    color: blue;
+}
