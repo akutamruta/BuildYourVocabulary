@@ -1,0 +1,21 @@
+{
+  "name": "vocabulary-builder",
+  "main": "vocabulary-builder.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/amruta1986/BuildYourVocabulary",
+  "authors": [
+    "Amruta Akut <amruta.akut@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "app-router": "~2.6.0",
+    "x-tag-imports": "x-tag/x-tag-imports"
+  }
+}

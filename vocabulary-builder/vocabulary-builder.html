@@ -6,15 +6,18 @@
 <link rel="import" href="../bower_components/paper-item/paper-item.html" />
 <link rel="import" href="../bower_components/core-selector/core-selector.html" />
 <link rel="import" href="../bower_components/core-icons/core-icons.html" />
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html" />
+<link rel="import" href="../bower_components/polymer-ui-card/polymer-ui-card.html" />
+<link rel="import" href="bower_components/x-tag-imports/x-tag-flipbox.html" />
 
-<polymer-element name="vocabulary-builder" noscript>
+<polymer-element name="vocabulary-builder">
 
 	<template>
 
 		<link rel="stylesheet" href="vocabulary-builder.css" />
 
-		<core-drawer-panel>
-			<core-header-panel id="drawerPanel" mode="waterfall-tall" flex drawer>
+		<core-drawer-panel id="coreDrawerPanel">
+			<core-header-panel id="drawerPanel" mode="waterfall-tall"  drawer>
 				<core-toolbar id="welcomeToolbar" class="tall">
 		        	<div class="welcome">Welcome !</div>
 			    </core-toolbar>
@@ -34,10 +37,24 @@
 		        </core-menu>
 			</core-header-panel>
 
-			<core-header-panel id="mainPanel" flex main>
+			<core-header-panel id="mainPanel" main>
 				<core-toolbar id="mainToolbar" class="main">
+					<core-icon-button id="navicon" icon="menu" on-click="{{ toggleDrawer }}"></core-icon-button>
 		        	<div class="">Build Your Vocabulary !</div>
 			    </core-toolbar>
+
+			    <div id="cards" layout horizontal>
+			    	<template repeat = "{{ word in wordList }}">
+			    		<x-flipbox id="flipbox_{{word.name}}" on-tap="{{ flip }}">
+						    <polymer-ui-card>
+						    	<div id="word">{{word.name}}</div>
+							</polymer-ui-card>
+						    <polymer-ui-card>
+						    	<div id="meaning">{{word.meaning}}</div>
+							</polymer-ui-card>
+			        	</x-flipbox>
+			        </template>
+	        	</div>
 			</core-header-panel>
 		</core-drawer-panel>
 

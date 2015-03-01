@@ -1,3 +1,5 @@
+@import url(bower_components/x-tag-flipbox/src/flipbox.css);
+
 paper-button {
     background: green;
     color: yellow;
@@ -28,7 +30,7 @@ div.welcome {
 }
 
 #mainToolbar {
-  background-color: #ABE35B;
+  background-color: #8E8C8F;
   color: white;
   padding: 16px 0px 16px 22px;
   font-size: xx-large;
@@ -54,3 +56,46 @@ core-header-panel#mainPanel {
 .selected {
     color: blue;
 }
+
+core-drawer-panel:not([narrow]) #navicon {
+	display : none;
+}
+
+#cards {
+    margin: 0 auto;
+    background: #eee;
+    overflow-y: scroll;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    height: 100%;
+}
+  
+/*.uicard {*/
+polymer-ui-card {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+#word {
+  font-size: large;
+  font-family: sans-serif;
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+x-flipbox {
+  display: block !important;
+  width: 240px !important;
+  height: 200px !important;
+  margin: 20px;
+}
+
+x-flipbox > * {
+  -webkit-transform-style: flat !important;
+  transform-style: flat !important;
+}
+
