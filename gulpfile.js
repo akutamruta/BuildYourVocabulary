@@ -18,7 +18,7 @@ gulp.task('browser-sync', function() {
     });
 
     //gulp.watch('**/*.{css}', ['auto-prefix', reload]);
-    gulp.watch('**/*.{html,js,css}', reload);
+    gulp.watch('**/*.{html,js,css,ico}', reload);
     
 });
 

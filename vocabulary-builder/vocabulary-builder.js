@@ -1,31 +1,31 @@
 Polymer('vocabulary-builder', {
 
+	ready: function() {
+		console.log("ready");
+	},
+
 	wordList: [
 		{'name': 'love', 'meaning': 'to like someone'},
 		{'name': 'hate', 'meaning': 'to dislike someone'},
 		{'name': 'home', 'meaning': 'place where is the heart is'},
-		/*{'name': 'understanding', 'meaning': 'an amazing feeling'},*/
+		/*{'name': 'understanding', 'meaning': 'an amazing feeling'},
+		{'name': 'family', 'meaning': 'people forever'},*/
 	],
 
 	toggleDrawer: function () {
 		this.$.coreDrawerPanel.togglePanel();
 	},
 
-	toggleCard: function (e) {
-		/*console.log(e.toElement);
-		var meaning = wordList*/
-	},
-
 	flip: function(e) {
-		//var flipbox = "flipbox_"+e.target.innerText;
-		if(e.target.tagName === 'DIV')
-			e.target.parentElement.parentElement.toggle();
-		else
-			e.target.parentElement.toggle();
+		//var flipboxName = "flipbox_"+e.target.innerText;
+		e.currentTarget.parentElement.toggle();
 		
 	},
 
 	flipped: function () {
 		console.log('flipped');
 	}
+
+	
 })
+

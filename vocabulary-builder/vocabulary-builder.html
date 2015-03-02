@@ -1,20 +1,25 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
 <link rel="import" href="../bower_components/core-drawer-panel/core-drawer-panel.html" />
 <link rel="import" href="../bower_components/core-header-panel/core-header-panel.html" />
-<link rel="import" href="../bower_components/paper-button/paper-button.html" />
 <link rel="import" href="../bower_components/core-menu/core-menu.html" />
 <link rel="import" href="../bower_components/paper-item/paper-item.html" />
 <link rel="import" href="../bower_components/core-selector/core-selector.html" />
 <link rel="import" href="../bower_components/core-icons/core-icons.html" />
 <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html" />
 <link rel="import" href="../bower_components/polymer-ui-card/polymer-ui-card.html" />
-<link rel="import" href="bower_components/x-tag-imports/x-tag-flipbox.html" />
+<link rel="import" href="../bower_components/x-tag-imports/x-tag-flipbox.html" />
+<link rel="import" href="../bower_components/core-ajax/core-ajax.html" />
 
 <polymer-element name="vocabulary-builder">
 
 	<template>
 
 		<link rel="stylesheet" href="vocabulary-builder.css" />
+
+		<core-ajax auto
+		    url="https://vocabularybuilder.firebaseio.com/wordlist.json"
+		    response="{{ wordList }}"
+		    ></core-ajax>
 
 		<core-drawer-panel id="coreDrawerPanel">
 			<core-header-panel id="drawerPanel" mode="waterfall-tall"  drawer>
@@ -44,22 +49,35 @@
 			    </core-toolbar>
 
 			    <div id="cards" layout horizontal>
-			    	<template repeat = "{{ word in wordList }}">
-			    		<x-flipbox id="flipbox_{{word.name}}" on-tap="{{ flip }}">
-						    <polymer-ui-card>
-						    	<div id="word">{{word.name}}</div>
-							</polymer-ui-card>
-						    <polymer-ui-card>
-						    	<div id="meaning">{{word.meaning}}</div>
-							</polymer-ui-card>
-			        	</x-flipbox>
-			        </template>
+			    	
+			    	<template id="wordListTemplate" repeat = "{{ word, i in wordList }}">
+			    		<!-- TODO: Convert the x-flipbox tag and its contents into a flashcard web component -->
+						    		<x-flipbox id="flipbox_{{word.name}}" >
+						    			
+						    			
+									    <polymer-ui-card on-tap="{{ flip }}">
+									    	<div id="word">						    		
+									    		{{word.name}}
+									    	</div>
+										</polymer-ui-card>
+									    <polymer-ui-card on-tap="{{ flip }}">
+									    	<div id="meaning" >
+									    		<div>{{word.meaning}}</div>
+									    	</div>
+										</polymer-ui-card>									
+										
+
+						        	</x-flipbox>
+					
+						</template>
+			       
 	        	</div>
 			</core-header-panel>
 		</core-drawer-panel>
 
 	</template>
 
+	
 	<script type="text/javascript" src="vocabulary-builder.js"></script>
 
 </polymer-element>
