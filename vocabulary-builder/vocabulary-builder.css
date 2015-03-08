@@ -1,5 +1,3 @@
-@import url(../bower_components/x-tag-flipbox/src/flipbox.css);
-
 paper-button {
     background: green;
     color: yellow;
@@ -69,43 +67,11 @@ core-drawer-panel:not([narrow]) #navicon {
     width: 100%;
 }
   
-/*.uicard {*/
-polymer-ui-card {
-    display: block;
-    height: 100%;
-    width: 100%;
-}
-
-#word {
-  font-size: large;
-  font-family: sans-serif;
-  width: 100%;
-  height: 60%;
-  position: absolute;
-  bottom: 0px;  
-  text-align: center;
-  cursor: default;
-  overflow-wrap : break-word;
-}
-
-#meaning {
-  text-align: center;
-  font-family: sans-serif;
-  position: relative;
-  top: 40%;
-  cursor: default;
-  overflow-wrap : break-word;
-}
-
-x-flipbox {
+flash-card {
   display: block !important;
   width: 240px !important;
   height: 200px !important;
   margin: 20px;
 }
 
-x-flipbox > * {
-  -webkit-transform-style: flat !important;
-  transform-style: flat !important;
-}
 

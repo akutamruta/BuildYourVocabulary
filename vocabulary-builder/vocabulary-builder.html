@@ -6,9 +6,9 @@
 <link rel="import" href="../bower_components/core-selector/core-selector.html" />
 <link rel="import" href="../bower_components/core-icons/core-icons.html" />
 <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html" />
-<link rel="import" href="../bower_components/polymer-ui-card/polymer-ui-card.html" />
-<link rel="import" href="../bower_components/x-tag-imports/x-tag-flipbox.html" />
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html" />
+<link rel="import" href="../flash-card/flash-card.html" />
+<link rel="import" href="../wc-variable/wc-variable.html" />
 
 <polymer-element name="vocabulary-builder">
 
@@ -17,9 +17,9 @@
 		<link rel="stylesheet" href="vocabulary-builder.css" />
 
 		<core-ajax auto
-		    url="https://vocabularybuilder.firebaseio.com/wordlist.json"
-		    response="{{ wordList }}"
-		    ></core-ajax>
+		    url="https://testvocab.firebaseio.com/wordlist.json"
+		    response="{{ wordlist }}">
+		</core-ajax>
 
 		<core-drawer-panel id="coreDrawerPanel">
 			<core-header-panel id="drawerPanel" mode="waterfall-tall"  drawer>
@@ -49,28 +49,34 @@
 			    </core-toolbar>
 
 			    <div id="cards" layout horizontal>
-			    	
-			    	<template id="wordListTemplate" repeat = "{{ word, i in wordList }}">
-			    		<!-- TODO: Convert the x-flipbox tag and its contents into a flashcard web component -->
-						    		<x-flipbox id="flipbox_{{word.name}}" >
-						    			
-						    			
-									    <polymer-ui-card on-tap="{{ flip }}">
-									    	<div id="word">						    		
-									    		{{word.name}}
-									    	</div>
-										</polymer-ui-card>
-									    <polymer-ui-card on-tap="{{ flip }}">
-									    	<div id="meaning" >
-									    		<div>{{word.meaning}}</div>
-									    	</div>
-										</polymer-ui-card>									
-										
+			    	<table>
+				    	<template repeat="{{ word, i in wordlist }}" >
 
-						        	</x-flipbox>
-					
-						</template>
-			       
+				    		<!-- <template bind if="{{ i < wordlist.length/3 }}"> -->
+
+					    		<tr>
+					    			<td>
+					    				<template bind if="{{ 3*i < wordlist.length }}">
+					    					<flash-card word="{{ wordlist[3*i] }}"></flash-card>
+					    				</template>
+					    			</td>
+					    		
+					    			<td>
+					    				<template bind if="{{ 3*i+1 < wordlist.length }}">
+					    					<flash-card word="{{ wordlist[3*i+1] }}"></flash-card>
+					    				</template>
+					    			</td>
+					    		
+					    			<td>
+					    				<template bind if="{{ 3*i+2 < wordlist.length }}">
+					    					<flash-card word="{{ wordlist[3*i+2] }}"></flash-card>
+					    				</template>
+					    			</td>
+					    		</tr>
+				    		
+				    		<!-- </template> -->
+				    	</template>
+			    	</table>
 	        	</div>
 			</core-header-panel>
 		</core-drawer-panel>

@@ -1,0 +1,31 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/polymer-ui-card/polymer-ui-card.html" />
+<link rel="import" href="../bower_components/x-tag-imports/x-tag-flipbox.html" />
+
+
+<polymer-element name="flash-card" attributes="word">
+
+	<template>
+
+		<link rel="stylesheet" href="flash-card.css" />
+		
+		<x-flipbox id="flipbox_{{word.name}}" >						    			
+						    			
+		    <polymer-ui-card on-tap="{{ flip }}">
+		    	<div id="word">						    		
+		    		{{word.name}}
+		    	</div>
+			</polymer-ui-card>
+		    <polymer-ui-card on-tap="{{ flip }}">
+		    	<div id="meaning" >
+		    		<div>{{word.meaning}}</div>
+		    	</div>
+			</polymer-ui-card>									
+			
+
+    	</x-flipbox>
+    </template>
+
+    <script type="text/javascript" src="flash-card.js"></script>
+
+</polymer-element>
