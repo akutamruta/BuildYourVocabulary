@@ -8,18 +8,25 @@
 <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html" />
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html" />
 <link rel="import" href="../flash-card/flash-card.html" />
-<link rel="import" href="../wc-variable/wc-variable.html" />
+<link rel="import" href="../random-number-generator/random-number-generator.html" />
+<link rel="import" href="../bower_components/core-pages/core-pages.html" />
+
 
 <polymer-element name="vocabulary-builder">
 
 	<template>
-
+		<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+		 
 		<link rel="stylesheet" href="vocabulary-builder.css" />
+
 
 		<core-ajax auto
 		    url="https://testvocab.firebaseio.com/wordlist.json"
-		    response="{{ wordlist }}">
+		    response="{{ wordlist }}"
+		    on-core-response="{{ generateArrayIndices }}">
 		</core-ajax>
+
+		<random-number-generator id="randomNumberGenerator" from="0" to="{{ wordlist.length }}" count="15" randomNumbers="{{ indices }}"></random-number-generator>
 
 		<core-drawer-panel id="coreDrawerPanel">
 			<core-header-panel id="drawerPanel" mode="waterfall-tall"  drawer>
@@ -27,63 +34,70 @@
 		        	<div class="welcome">Welcome !</div>
 			    </core-toolbar>
 
-			    <core-menu vertical>
-			    	<core-selector selected="0" selectedClass="selected">
-				    	<paper-item id="learn">
-				    		<core-icon icon="book"></core-icon>
-				    		<div class="learn">Learn</div>
-				    	</paper-item>
-			          	<hr>
-			          	<paper-item id="learn">
-				    		<core-icon icon="question-answer"></core-icon>
-				    		<div class="learn">Test</div>
-				    	</paper-item>
-		          	</core-selector>
-		        </core-menu>
+			    <core-selector selected="{{selected}}" selectedClass="selected">
+			    	<paper-item  route="learn">
+			    		<core-icon icon="book"></core-icon>
+			    		<div class="learn">Learn</div>
+			    	</paper-item>
+		          	
+		          	<paper-item id="test" route="test">
+			    		<core-icon icon="question-answer"></core-icon>
+			    		<div class="learn">Test</div>
+			    	</paper-item>
+	          	</core-selector>
 			</core-header-panel>
 
 			<core-header-panel id="mainPanel" main>
+
 				<core-toolbar id="mainToolbar" class="main">
 					<core-icon-button id="navicon" icon="menu" on-click="{{ toggleDrawer }}"></core-icon-button>
 		        	<div class="">Build Your Vocabulary !</div>
 			    </core-toolbar>
 
-			    <div id="cards" layout horizontal>
-			    	<table>
-				    	<template repeat="{{ word, i in wordlist }}" >
+					
+				<core-pages selected="{{selected}}">
+				
+					<section>
+						Learn
+					</section>
 
-				    		<!-- <template bind if="{{ i < wordlist.length/3 }}"> -->
+					<section>
+					    <div id="cards">
+					    	<div class="table-responsive">
+						    	<table class="table">
+							    	<template repeat="{{ word, i in sublist }}" >
 
-					    		<tr>
-					    			<td>
-					    				<template bind if="{{ 3*i < wordlist.length }}">
-					    					<flash-card word="{{ wordlist[3*i] }}"></flash-card>
-					    				</template>
-					    			</td>
-					    		
-					    			<td>
-					    				<template bind if="{{ 3*i+1 < wordlist.length }}">
-					    					<flash-card word="{{ wordlist[3*i+1] }}"></flash-card>
-					    				</template>
-					    			</td>
-					    		
-					    			<td>
-					    				<template bind if="{{ 3*i+2 < wordlist.length }}">
-					    					<flash-card word="{{ wordlist[3*i+2] }}"></flash-card>
-					    				</template>
-					    			</td>
-					    		</tr>
-				    		
-				    		<!-- </template> -->
-				    	</template>
-			    	</table>
-	        	</div>
+							    		<tr>
+							    			<td>
+							    				<template bind if="{{ 3*i < sublist.length }}">
+							    					<flash-card word="{{ sublist[3*i] }}"></flash-card>
+							    				</template>
+							    			</td>
+							    		
+							    			<td>
+							    				<template bind if="{{ 3*i+1 < sublist.length }}">
+							    					<flash-card word="{{ sublist[3*i+1] }}"></flash-card>
+							    				</template>
+							    			</td>
+							    		
+							    			<td>
+							    				<template bind if="{{ 3*i+2 < sublist.length }}">
+							    					<flash-card word="{{ sublist[3*i+2] }}"></flash-card>
+							    				</template>
+							    			</td>
+							    		</tr>
+							    		
+							    	</template>
+						    	</table>
+						    </div>
+			        	</div>
+			        </section>
+        		</core-pages>
 			</core-header-panel>
 		</core-drawer-panel>
 
 	</template>
 
-	
 	<script type="text/javascript" src="vocabulary-builder.js"></script>
 
 </polymer-element>

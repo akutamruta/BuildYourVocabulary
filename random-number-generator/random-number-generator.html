@@ -1,0 +1,103 @@
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<polymer-element name="random-number-generator" attributes="from to count randomNumbers wholeNumber">
+
+	<script>
+		Polymer('random-number-generator', {
+
+			from: 1,
+			to: 100,
+			count : 1,
+			randomNumbers: [],
+			wholeNumber : true,
+
+			UPPER_LIMIT : 1000,
+
+			ready : function () {
+
+				this.generateRandomNumbers();
+
+			},
+
+			validateInput : function () {
+
+				if(this.from >= 0 && this.to <= this.UPPER_LIMIT) {
+
+					if(this.count > 100) {
+						this.count = 100;
+					}
+					if (this.count < 0) {
+						this.count = 0;
+					}
+
+					if (this.count == 0)
+						return false;
+
+					return true;
+				}
+				return false;
+			},
+
+			generateRandomNumbers : function() {
+
+				var generateRandomNumbers = false, i, number, multiplier = 1, randomNumber = -1;
+
+				generateRandomNumbers = this.validateInput();
+
+				multiplier = this.getMultiplier();
+
+				if(generateRandomNumbers == true) {
+
+					for (i=0 ; i < this.count ; i++) {
+
+						/*if(this.wholeNumber == true)
+							randomNumber = Math.floor(Math.random() * this.to);
+						else
+							randomNumber = Math.random() * this.to;
+
+						if(randomNumber != -1) {
+							// constrain the generated number in the range
+							if(randomNumber < this.from) {
+
+								randomNumber = Math.floor(randomNumber + Math.random() * (this.to - this.from));
+
+							}*/
+
+							console.log(this.from, this.to);
+							randomNumber = (Math.random() * (this.to - this.from)) + this.from;
+							if(this.wholeNumber == true) {
+								randomNumber = Math.floor(randomNumber);
+							}
+							
+
+							this.randomNumbers[i] = randomNumber;
+						//}
+					}
+
+					console.log(this.randomNumbers);
+				}
+				else {
+					console.warn('Please specify the number of random numbers to be generated using the count attribute');
+				}
+
+			},
+
+			getMultiplier : function() {
+				if(this.to<= 1) {
+					return 1;
+				}
+				else if(this.to/10 <= 1) {
+					return 10;
+				}
+				else if(this.to/100 <= 1) {
+					return 100;
+				}
+				else if(this.to/1000 <= 1) {
+					return 1000;
+				}
+			}
+		});
+
+	</script>
+
+</polymer-element>

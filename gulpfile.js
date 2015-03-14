@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var connect = require('gulp-connect');
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
+var vulcanize = require('gulp-vulcanize');
 
 var autoprefixer = require('gulp-autoprefixer');
 
@@ -37,6 +38,34 @@ gulp.task('generate-service-worker', function(callback) {
     }
     fs.writeFile(path.join(rootDir, 'sw.js'), swFileContents, callback);
   });
+});
+
+gulp.task('generate-sw', function(callback) {
+  var fs = require('fs');
+  var swPrecache = require('sw-precache');
+  var rootDir = './dist';
+  var path = require('path');
+
+  swPrecache({
+    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
+    stripPrefix: rootDir
+  }, function(error, swFileContents) {
+    if (error) {
+      return callback(error);
+    }
+    fs.writeFile(path.join(rootDir, 'serviceWorker.js'), swFileContents, callback);
+  });
+});
+
+gulp.task('vulcanize', function() {
+
+  return gulp.src('index.html')
+        .pipe(vulcanize({
+            dest: './dist',
+            strip: true
+        }))
+        .pipe(gulp.dest('./dist'));
+
 });
 
 //gulp.task('default',['connect','watch'])

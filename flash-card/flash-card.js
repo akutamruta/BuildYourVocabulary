@@ -4,10 +4,6 @@ Polymer('flash-card', {
 		
 		e.currentTarget.parentElement.toggle();
 		
-	},
-
-	ready : function () {
-		console.log(this.word);
 	}
 	
 })

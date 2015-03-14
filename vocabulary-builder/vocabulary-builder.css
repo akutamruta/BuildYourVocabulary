@@ -60,11 +60,11 @@ core-drawer-panel:not([narrow]) #navicon {
 #cards {
     margin: 0 auto;
     background: #f2f2f2;
-    overflow-y: scroll;
     -webkit-user-select: none;
     -moz-user-select: none;
     height: 100%;
     width: 100%;
+    /*overflow-x : scroll;*/
 }
   
 flash-card {
@@ -75,3 +75,6 @@ flash-card {
 }
 
 
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}

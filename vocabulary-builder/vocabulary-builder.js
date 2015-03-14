@@ -1,31 +1,52 @@
 Polymer('vocabulary-builder', {
 
+	wordlist : [],
+
+	indices : [],
+
 	ready: function() {
 		console.log("ready");
+		this.selected = 0;
 	},
 
-	wordList: [
-		{'name': 'love', 'meaning': 'to like someone'},
-		{'name': 'hate', 'meaning': 'to dislike someone'},
-		{'name': 'home', 'meaning': 'place where is the heart is'},
-		/*{'name': 'understanding', 'meaning': 'an amazing feeling'},
-		{'name': 'family', 'meaning': 'people forever'},*/
-	],
+	wordList: [],
 
 	toggleDrawer: function () {
 		this.$.coreDrawerPanel.togglePanel();
 	},
 
 	flip: function(e) {
-		//var flipboxName = "flipbox_"+e.target.innerText;
-		e.currentTarget.parentElement.toggle();
-		
+		e.currentTarget.parentElement.toggle();	
 	},
 
 	flipped: function () {
 		console.log('flipped');
-	}
+	},
 
 	
+	generateSubWordList : function() {
+
+		var list = [];
+
+		for(var i = 0; i < this.indices.length ; i++) {
+			list[i] = this.wordlist[this.indices[i]];
+		}
+
+		this.sublist = list;
+
+	},
+
+	generateArrayIndices : function () {
+		if(this.wordlist != null && this.wordlist.length > 0) {
+			this.$.randomNumberGenerator.generateRandomNumbers();
+		}			
+	},
+
+	indicesChanged : function () {
+		if(this.wordlist.length > 0 && this.indices.length > 0)
+			this.generateSubWordList();
+		else if(this.indices.length == 0)
+			this.$.randomNumberGenerator.generateRandomNumbers();
+	}
 })
 

@@ -29,7 +29,9 @@
     "paper-button": "Polymer/paper-button#~0.5.5",
     "core-menu": "Polymer/core-menu#~0.5.5",
     "paper-item": "Polymer/paper-item#~0.5.5",
-    "core-icons": "Polymer/core-icons#~0.5.5"
+    "core-icons": "Polymer/core-icons#~0.5.5",
+    "core-pages": "Polymer/core-pages#~0.5.5",
+    "bootstrap": "~3.3.2"
   },
   "resolutions": {
     "core-component-page": "^0.5",
