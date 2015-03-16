@@ -24,7 +24,7 @@
 
 
 
-var PrecacheConfig = [["/favicon.ico","36dfe54b4a904bf2e21d84a8b298d690"],["/index.html","697a19c055da2ac2bf0cb8778b709f96"]];
+var PrecacheConfig = [["/favicon.ico","36dfe54b4a904bf2e21d84a8b298d690"],["/index.html","257de555dbc8da4e85df8db2af250bfa"]];
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
 
 

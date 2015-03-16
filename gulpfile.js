@@ -10,7 +10,7 @@ var autoprefixer = require('gulp-autoprefixer');
 gulp.task('browser-sync', function() {
      browserSync({
         server: {
-            baseDir: ".",
+            baseDir: "./dist",
 
         },
         port: 8080,
@@ -23,22 +23,22 @@ gulp.task('browser-sync', function() {
     
 });
 
-gulp.task('generate-service-worker', function(callback) {
+/*gulp.task('generate-service-worker', function(callback) {
   var fs = require('fs');
   var swPrecache = require('sw-precache');
   var rootDir = '.';
   var path = require('path');
 
-  swPrecache({
-    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
-    stripPrefix: rootDir
+  swPrecache({*/
+    //staticFileGlobs: [rootDir + '/**/*.//{js,html,css,png,jpg,gif}'],
+    /*stripPrefix: rootDir
   }, function(error, swFileContents) {
     if (error) {
       return callback(error);
     }
     fs.writeFile(path.join(rootDir, 'sw.js'), swFileContents, callback);
   });
-});
+});*/
 
 gulp.task('generate-sw', function(callback) {
   var fs = require('fs');
