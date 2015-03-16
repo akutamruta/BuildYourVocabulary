@@ -31,10 +31,21 @@
     "paper-item": "Polymer/paper-item#~0.5.5",
     "core-icons": "Polymer/core-icons#~0.5.5",
     "core-pages": "Polymer/core-pages#~0.5.5",
-    "bootstrap": "~3.3.2"
+    "bootstrap": "~3.3.2",
+    "page-er": "~0.0.6"
   },
   "resolutions": {
     "core-component-page": "^0.5",
-    "polymer": "~0.5.5"
+    "polymer": "~0.5.5",
+    "core-ajax": "~0.5.5",
+    "core-icon": "^0.5",
+    "core-iconset": "^0.5",
+    "core-meta": "^0.5",
+    "core-iconset-svg": "^0.5",
+    "paper-button": "~0.5.5",
+    "paper-ripple": "^0.5",
+    "font-roboto": "^0.5",
+    "paper-shadow": "^0.5",
+    "core-icons": "~0.5.5"
   }
 }

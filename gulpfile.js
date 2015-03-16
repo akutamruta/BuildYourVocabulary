@@ -47,7 +47,7 @@ gulp.task('generate-sw', function(callback) {
   var path = require('path');
 
   swPrecache({
-    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif}'],
+    staticFileGlobs: [rootDir + '/**/*.{js,html,css,png,jpg,gif,ico}'],
     stripPrefix: rootDir
   }, function(error, swFileContents) {
     if (error) {
@@ -62,7 +62,15 @@ gulp.task('vulcanize', function() {
   return gulp.src('index.html')
         .pipe(vulcanize({
             dest: './dist',
-            strip: true
+            strip: true,
+            inline: true,
+            //csp : true
+            excludes: {
+              scripts: [
+                'swReg.js',
+                'serviceWorker.js'
+              ]
+            }
         }))
         .pipe(gulp.dest('./dist'));
 
@@ -70,3 +78,12 @@ gulp.task('vulcanize', function() {
 
 //gulp.task('default',['connect','watch'])
 gulp.task('default',['browser-sync'])
+
+var uglify = require('gulp-uglifyjs');
+ 
+gulp.task('uglify', function() {
+  gulp.src('./**/*.js && !node_modules/**/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'))
+});
+

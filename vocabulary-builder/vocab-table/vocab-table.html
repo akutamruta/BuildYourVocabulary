@@ -1,0 +1,39 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html" />
+
+<polymer-element name="vocab-table" attributes="words numberOfTables">
+
+	<template>
+
+		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="vocab-table.css" />
+
+		<div class="default">
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td><strong>Word</strong></td>
+							<td><strong>Meaning</strong></td>
+						</tr>
+					</thead>
+
+					<tbody>
+						<template repeat="{{ word, i in words }}">
+
+							<tr>
+								<td>{{word.name}}</td>
+								<td>{{word.meaning}}</td>
+							</tr>
+
+						</template>
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+
+	</template>
+
+	<script type="text/javascript" src="vocab-table.js"></script>
+
+</polymer-element>

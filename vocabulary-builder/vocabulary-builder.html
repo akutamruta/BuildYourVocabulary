@@ -10,6 +10,8 @@
 <link rel="import" href="../flash-card/flash-card.html" />
 <link rel="import" href="../random-number-generator/random-number-generator.html" />
 <link rel="import" href="../bower_components/core-pages/core-pages.html" />
+<link rel="import" href="../bower_components/page-er/page-er.html" />
+<link rel="import" href="vocab-table/vocab-table.html" />
 
 
 <polymer-element name="vocabulary-builder">
@@ -58,7 +60,12 @@
 				<core-pages selected="{{selected}}">
 				
 					<section>
-						Learn
+						
+						<vocab-table id="vocabTable" words="{{ results }}" numberOfTables="4">
+						</vocab-table>
+
+						<page-er id="pager" perpage="10" next=">" previous="<" on-pager-data="{{ onPaginationComplete }}" on-pager-change="{{ onPageChange }}"></page-er>
+
 					</section>
 
 					<section>
@@ -99,5 +106,5 @@
 	</template>
 
 	<script type="text/javascript" src="vocabulary-builder.js"></script>
-
+	
 </polymer-element>

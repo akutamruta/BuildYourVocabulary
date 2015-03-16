@@ -5,7 +5,6 @@ Polymer('vocabulary-builder', {
 	indices : [],
 
 	ready: function() {
-		console.log("ready");
 		this.selected = 0;
 	},
 
@@ -18,11 +17,6 @@ Polymer('vocabulary-builder', {
 	flip: function(e) {
 		e.currentTarget.parentElement.toggle();	
 	},
-
-	flipped: function () {
-		console.log('flipped');
-	},
-
 	
 	generateSubWordList : function() {
 
@@ -39,6 +33,7 @@ Polymer('vocabulary-builder', {
 	generateArrayIndices : function () {
 		if(this.wordlist != null && this.wordlist.length > 0) {
 			this.$.randomNumberGenerator.generateRandomNumbers();
+			this.$.pager.data = this.wordlist;
 		}			
 	},
 
@@ -47,6 +42,42 @@ Polymer('vocabulary-builder', {
 			this.generateSubWordList();
 		else if(this.indices.length == 0)
 			this.$.randomNumberGenerator.generateRandomNumbers();
-	}
+	},
+
+	onPaginationComplete : function (e) {
+		this.results = e.detail.data;	
+		this.$.vocabTable.refresh();
+		this.updateCurrentRange();	
+	},
+
+	onPageChange : function (e) {
+		this.results = e.detail.data;
+		this.$.vocabTable.refresh();	
+		this.updateCurrentRange();	
+	},
+
+	updateCurrentRange : function() {
+		var currentPage = this.$.pager.currentpage;
+		var pageCount = this.$.pager.pageCount;
+		var addPages, pages = [];
+
+		addPages = function (fromPage, toPage) {
+
+			for(var i=0 ; i<= (toPage - fromPage) ; i++) {
+				pages[i] = fromPage + i;
+			}
+			
+		}
+
+		var pagesToDisplay = 10;
+
+		if(currentPage >= 0 && currentPage <= 4) 
+			addPages (0, 9);
+		else if(currentPage >= pageCount - 4)
+			addPages (pageCount - 9, pageCount);
+		else
+			addPages (currentPage - 4, currentPage + 5);
+		this.$.pager.currentRange = pages;
+	}	
 })
 
