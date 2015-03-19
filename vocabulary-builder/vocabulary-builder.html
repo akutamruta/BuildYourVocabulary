@@ -12,6 +12,8 @@
 <link rel="import" href="../bower_components/core-pages/core-pages.html" />
 <link rel="import" href="../bower_components/page-er/page-er.html" />
 <link rel="import" href="vocab-table/vocab-table.html" />
+<link rel="import" href="../indexed-db/i-db.html" />
+<link rel="import" href="../indexed-db/idb-store.html" />
 
 
 <polymer-element name="vocabulary-builder">
@@ -21,8 +23,13 @@
 		 
 		<link rel="stylesheet" href="vocabulary-builder.css" />
 
+		<i-db databaseName="wordlist" database="{{ db }}" versionNumber="1" on-success="{{ onDbInitialized }}" on-error="{{ onError }}">
 
-		<core-ajax auto
+			<idb-store id="store" name="wordlist" database="{{ db }}" data="{{ wordlist }}" on-dataread-success="{{ onDataRead }}" on-dataread-error="{{ onError }}"></idb-store>
+
+		</i-db>
+
+		<core-ajax id="wordlistRequest"
 		    url="https://testvocab.firebaseio.com/wordlist.json"
 		    response="{{ wordlist }}"
 		    on-core-response="{{ generateArrayIndices }}">

@@ -4,8 +4,40 @@ Polymer('vocabulary-builder', {
 
 	indices : [],
 
+	store : null,
+	db : null,
+
 	ready: function() {
 		this.selected = 0;
+	},
+
+	onError : function () {
+		this.$.wordlistRequest.go();
+	},
+
+	onDataRead : function () {
+
+		if(this.wordlist == null || this.wordlist == undefined) {
+			this.$.wordlistRequest.go();
+			console.log('requesting wordlist to server');
+		}
+		else
+		{
+			this.generateArrayIndices();
+		}
+	},
+
+	onDbInitialized : function (event) {
+		// check if wordlist is there in the store. If yes, set wordlist 
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		if(this.db != null) {
+			var ob = this.$.store.getData("json", "readonly");			
+		}
+		else
+			console.log('db instance is invalid');
 	},
 
 	wordList: [],
@@ -31,14 +63,23 @@ Polymer('vocabulary-builder', {
 	},
 
 	generateArrayIndices : function () {
-		if(this.wordlist != null && this.wordlist.length > 0) {
+
+		if(this.wordlist != null && this.wordlist != undefined && this.wordlist.length > 0) {
+
+			console.log('fetched wordlist');
 			this.$.randomNumberGenerator.generateRandomNumbers();
 			this.$.pager.data = this.wordlist;
+
+			if(this.db != null) {
+
+			    console.log('storing data');
+			    this.$.store.storeData("json", "readwrite");
+			}
 		}			
 	},
 
 	indicesChanged : function () {
-		if(this.wordlist.length > 0 && this.indices.length > 0)
+		if(this.wordlist != null && this.wordlist.length > 0 && this.indices.length > 0)
 			this.generateSubWordList();
 		else if(this.indices.length == 0)
 			this.$.randomNumberGenerator.generateRandomNumbers();

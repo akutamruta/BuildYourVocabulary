@@ -10,7 +10,7 @@ var autoprefixer = require('gulp-autoprefixer');
 gulp.task('browser-sync', function() {
      browserSync({
         server: {
-            baseDir: "./dist",
+            baseDir: ".",
 
         },
         port: 8080,
