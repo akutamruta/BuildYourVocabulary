@@ -18,27 +18,10 @@ gulp.task('browser-sync', function() {
         logLevel: "silent"
     });
 
-    //gulp.watch('**/*.{css}', ['auto-prefix', reload]);
     gulp.watch('**/*.{html,js,css,ico}', reload);
     
 });
 
-/*gulp.task('generate-service-worker', function(callback) {
-  var fs = require('fs');
-  var swPrecache = require('sw-precache');
-  var rootDir = '.';
-  var path = require('path');
-
-  swPrecache({*/
-    //staticFileGlobs: [rootDir + '/**/*.//{js,html,css,png,jpg,gif}'],
-    /*stripPrefix: rootDir
-  }, function(error, swFileContents) {
-    if (error) {
-      return callback(error);
-    }
-    fs.writeFile(path.join(rootDir, 'sw.js'), swFileContents, callback);
-  });
-});*/
 
 gulp.task('generate-sw', function(callback) {
   var fs = require('fs');
@@ -64,7 +47,6 @@ gulp.task('vulcanize', function() {
             dest: './dist',
             strip: true,
             inline: true,
-            //csp : true
             excludes: {
               scripts: [
                 'swReg.js',
@@ -76,14 +58,5 @@ gulp.task('vulcanize', function() {
 
 });
 
-//gulp.task('default',['connect','watch'])
 gulp.task('default',['browser-sync'])
-
-var uglify = require('gulp-uglifyjs');
- 
-gulp.task('uglify', function() {
-  gulp.src('./**/*.js && !node_modules/**/*.js')
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/js'))
-});
 

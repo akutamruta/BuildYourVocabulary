@@ -16,7 +16,6 @@
 			database : null,
 
 			ready : function () {
-				console.log('i-db is ready');
 				this.initializeDatabase();
 			},
 
@@ -26,50 +25,26 @@
 				if(this.database != "" && this.versionNumber > 0) {
 
 					var db;
-					//var request = window.indexedDB.open("wordlist", 1);
 					var request = window.indexedDB.open(this.databaseName, this.versionNumber);
 
 					var context = this;
 					request.onerror = function(event) {
-					  
-					  	// The user denied the permission or there was a problem creating the database
-						// try requesting for the wordlist online
-						
-						//this.$.wordlistRequest.go();
+					 
 						context.fire('error', event.target.error.name);
-						console.log('error');
 						
 					};
 					request.onsuccess = function(event) {
 
-						// If the database was created successfully, then 
-						// 1. Check if the wordlist is already there in the db. If yes, load it
-						// 2. Else fetch it from the server and store it for future use.
-						//console.log('success');
-						//context.db = event.target.result;
 						context.database = event.target.result;
 						context.fire('success');
 					};
 
-					// To be tested
 					request.onupgradeneeded = function(event) { 
 
 						var db = event.target.result;
-
-						console.log('upgrade needed');
-						// Create an objectStore for this database if it is not existing
-
-						/*if(!db.objectStoreNames.contains("wordlist")) {
-					  		db.createObjectStore("wordlist");
-						}*/
-						/*if(!db.objectStoreNames.contains(this.storeName)) {
-							db.createObjectStore(this.storeName);
-						}*/
 						context.children[0].createStore(db);
 					};
 				}
-
-				//return store;
 			},
 		});
 	</script>

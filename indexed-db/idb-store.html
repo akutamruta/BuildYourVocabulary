@@ -26,35 +26,17 @@
 					if(this.database.objectStoreNames.contains(this.name)) {
 						var transaction = this.database.transaction([this.name],mode);
 						var store = transaction.objectStore(this.name);
-
-						console.log("reading from store", store);
-						
 						var ob = store.get(key);
-
 						var context = this;
 				
 						ob.onsuccess = function (e) {
 							context.data = e.target.result;
-					        //console.log("Reading JSON from store : ",result);
-					       
-					        
-					        //context.data = result;
 					        context.fire('dataread-success');
 						};
 
 						ob.onerror = function (e) {
-							console.log('couldnt get json from store');
 							context.fire('dataread-error');
 						}
-					}
-					else {
-						/*if(mode == "readwrite") {
-							this.createStore();
-							this.getData();
-						}
-						else {
-							this.fire('dataread-error');
-						}*/
 					}
 				}
 			},
@@ -72,25 +54,23 @@
 			
 					ob.onsuccess = function (e) {
 						result = e.target.result;
-				        //console.log("Reading JSON from store : ",result);
+				        
 				        
 				        if(result == undefined  || result == null && context.data != null && context.data != undefined) {
-				        	// TODO: Check if wordlist is there in the db
+				        	
 							var request = store.add(context.data, key);
 
 							request.onerror = function(e) {
-						        console.log("Error",e.target.error.name);
-						        //some type of error handler
+						        this.fire('error');
 						    }
 						 
 						    request.onsuccess = function(e) {
-						        console.log("Woot! Did it");
+						        this.fire('success');
 						    }
 				        }
 					};
 
 					ob.onerror = function (e) {
-						console.log('couldnt get json from store');
 						context.fire('dataread-error');
 					}
 				}
@@ -104,9 +84,6 @@
 					}
 				}
 			}
-
-			// console.log: it is assumed that data has not changed.. if data is there then we need
-			// to do an update
 		});
 
 	</script>
