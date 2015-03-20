@@ -11,7 +11,7 @@ This application has 2 sections
 
 In addition to this, the app can also work offline. It is responsive, uses the latest service workers based on ES6 promises and caches the wordlist in IndexedDb to deliver a truly offline experience. 
 
-To test it, visit https://buildyourvocabulary.appspot.com/ . To test the offline capability, go offline and go to https://buildyourvocabulary.appspot.com/index.html 
+To test it, visit https://buildyourvocabulary.appspot.com/ . 
 P.S: Currently you need to mention /index.html explicitly after going offline because of a bug in the service worker code.
 
 #Technologies Used
@@ -24,6 +24,7 @@ P.S: Currently you need to mention /index.html explicitly after going offline be
 
 #To-Do
 - Include the service worker polyfill
+- Include basic instructions in the Test page
 - Make the app mobile-compatible
 - Incorporate routing
 - Improve UX
