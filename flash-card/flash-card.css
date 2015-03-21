@@ -42,3 +42,18 @@ x-flipbox > * {
   -webkit-transform-style: flat !important;
   transform-style: flat !important;
 }
+
+#flipClick {
+  right: 0px;
+  bottom: 0px;
+  display: block;
+  position: absolute;
+  font-size: small;
+}
+
+core-icon[icon="image:rotate-left"] {
+    /*color: #a4c639;*/
+    width: 20px;
+    height: 20px;
+}
+

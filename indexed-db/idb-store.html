@@ -61,11 +61,11 @@
 							var request = store.add(context.data, key);
 
 							request.onerror = function(e) {
-						        this.fire('error');
+						        context.fire('error');
 						    }
 						 
 						    request.onsuccess = function(e) {
-						        this.fire('success');
+						        context.fire('success');
 						    }
 				        }
 					};
