@@ -22,7 +22,7 @@
 
 'use strict';
 
-/*importScripts('serviceworker-cache-polyfill.js');*/
+//importScripts('serviceworker-cache-polyfill.js');
 
 var PrecacheConfig = [["/favicon.ico","36dfe54b4a904bf2e21d84a8b298d690"],["/index.html","257de555dbc8da4e85df8db2af250bfa"]];
 var CacheNamePrefix = 'sw-precache-v1--' + (self.registration ? self.registration.scope : '') + '-';
