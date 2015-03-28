@@ -9,7 +9,7 @@ core-header-panel {
 }
 
 div.welcome {
-	padding-top: 50px;
+	/*padding-top: 50px;*/
 	padding-left: 25px;
 }
 
@@ -18,7 +18,8 @@ div.welcome {
 }
 
 #welcomeToolbar {
-  background-color: #B995ED;
+  /*background-color: #B995ED;*/
+  background-color: #AD66D5;
   color: white;
   padding: 16px 0px 16px 22px;
   font-size: xx-large;
@@ -32,7 +33,14 @@ div.welcome {
   font-size: xx-large;
   font-family: sans-serif;
   align: center;
+  height: 69px;
+}
 
+
+#mainToolbarText.instruction {
+  font-size: x-large;
+  position: relative;
+  top: 20%;
 }
 
 
@@ -78,3 +86,4 @@ flash-card {
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
 }
+

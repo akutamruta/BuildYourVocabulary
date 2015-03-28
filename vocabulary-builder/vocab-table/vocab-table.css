@@ -6,3 +6,9 @@ td {
 	width : 150px;
 }
 
+
+
+.table>thead:first-child>tr:first-child>td {
+	background-color: lightslategrey;
+	color: white;
+}

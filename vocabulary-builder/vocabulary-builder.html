@@ -38,29 +38,29 @@
 		<random-number-generator id="randomNumberGenerator" from="0" to="{{ wordlist.length }}" count="15" randomNumbers="{{ indices }}"></random-number-generator>
 
 		<core-drawer-panel id="coreDrawerPanel">
-			<core-header-panel id="drawerPanel" mode="waterfall-tall"  drawer>
-				<core-toolbar id="welcomeToolbar" class="tall">
+			<core-header-panel id="drawerPanel" mode="standard"  drawer>
+				<core-toolbar id="welcomeToolbar" >
 		        	<div class="welcome">Welcome !</div>
 			    </core-toolbar>
 
 			    <core-selector selected="{{selected}}" selectedClass="selected">
-			    	<paper-item  route="learn">
+			    	<paper-item  route="learn" on-click="{{ updateLearnHeading }}">
 			    		<core-icon icon="book"></core-icon>
 			    		<div class="learn">Learn</div>
 			    	</paper-item>
 		          	
-		          	<paper-item id="test" route="test">
+		          	<paper-item id="test" route="test" on-click="{{ updateFlashCardHeading }}">
 			    		<core-icon icon="question-answer"></core-icon>
-			    		<div class="learn">Test</div>
+			    		<div class="learn">Flash Cards</div>
 			    	</paper-item>
 	          	</core-selector>
 			</core-header-panel>
 
-			<core-header-panel id="mainPanel" main>
+			<core-header-panel id="mainPanel" mode="standard" main>
 
-				<core-toolbar id="mainToolbar" class="main">
+				<core-toolbar id="mainToolbar" class="main tall">
 					<core-icon-button id="navicon" icon="menu" on-click="{{ toggleDrawer }}"></core-icon-button>
-		        	<div class="">Build Your Vocabulary !</div>
+		        	<div id="mainToolbarText">{{text}}</div>
 			    </core-toolbar>
 
 					
