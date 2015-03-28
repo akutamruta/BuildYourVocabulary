@@ -58,7 +58,7 @@
 
 			<core-header-panel id="mainPanel" mode="standard" main>
 
-				<core-toolbar id="mainToolbar" class="main tall">
+				<core-toolbar id="mainToolbar">
 					<core-icon-button id="navicon" icon="menu" on-click="{{ toggleDrawer }}"></core-icon-button>
 		        	<div id="mainToolbarText">{{text}}</div>
 			    </core-toolbar>
@@ -76,35 +76,31 @@
 					</section>
 
 					<section>
-					    <div id="cards">
-					    	<div class="table-responsive">
-						    	<table class="table">
-							    	<template repeat="{{ word, i in sublist }}" >
+					    <div class="container">
+					    	<template repeat="{{ word, i in sublist }}" >
 
-							    		<tr>
-							    			<td>
-							    				<template bind if="{{ 3*i < sublist.length }}">
-							    					<flash-card word="{{ sublist[3*i] }}"></flash-card>
-							    				</template>
-							    			</td>
-							    		
-							    			<td>
-							    				<template bind if="{{ 3*i+1 < sublist.length }}">
-							    					<flash-card word="{{ sublist[3*i+1] }}"></flash-card>
-							    				</template>
-							    			</td>
-							    		
-							    			<td>
-							    				<template bind if="{{ 3*i+2 < sublist.length }}">
-							    					<flash-card word="{{ sublist[3*i+2] }}"></flash-card>
-							    				</template>
-							    			</td>
-							    		</tr>
-							    		
-							    	</template>
-						    	</table>
-						    </div>
-			        	</div>
+					    		<div class="row">
+					    			<div class="col-sm-4">
+					    				<template bind if="{{ 3*i < sublist.length }}">
+					    					<flash-card word="{{ sublist[3*i] }}"></flash-card>
+					    				</template>
+					    			</div>
+					    		
+					    			<div class="col-sm-4">
+					    				<template bind if="{{ 3*i+1 < sublist.length }}">
+					    					<flash-card word="{{ sublist[3*i+1] }}"></flash-card>
+					    				</template>
+					    			</div>
+					    		
+					    			<div class="col-sm-4">
+					    				<template bind if="{{ 3*i+2 < sublist.length }}">
+					    					<flash-card word="{{ sublist[3*i+2] }}"></flash-card>
+					    				</template>
+					    			</div>
+					    		</div>
+					    		
+					    	</template>
+					    </div>
 			        </section>
         		</core-pages>
 			</core-header-panel>
