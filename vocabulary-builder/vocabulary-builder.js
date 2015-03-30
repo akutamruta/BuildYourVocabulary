@@ -1,7 +1,8 @@
 (function(window) {
 
 	var LEARN_PAGE_HEADING = "Build Your Vocabulary !",
-		MEMORIZE_PAGE_HEADING = "Memorize the word and click the flash card to show its meaning";
+		MEMORIZE_PAGE_HEADING = "Memorize the word and click the flash card to show its meaning",
+		TEST_PAGE_HEADING = "Test your Vocabulary !"
 
 	Polymer('vocabulary-builder', {
 
@@ -81,6 +82,8 @@
 				    console.log('storing data');
 				    this.$.store.storeData("json", "readwrite");
 				}
+
+				this.$.vocabTester.initialize();
 			}			
 		},
 
@@ -136,6 +139,12 @@
 		updateFlashCardHeading : function() {
 			this.text = MEMORIZE_PAGE_HEADING;
 			this.$.mainToolbarText.className = "instruction";
+			this.$.coreDrawerPanel.closeDrawer();
+		},
+
+		updateTestHeading : function () {
+			this.text = TEST_PAGE_HEADING;
+			this.$.mainToolbarText.className = "";
 			this.$.coreDrawerPanel.closeDrawer();
 		}	
 	})

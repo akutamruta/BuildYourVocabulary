@@ -18,34 +18,40 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~0.5.5",
-    "app-router": "~2.6.0",
+    "polymer": "^0.5.5",
+    "app-router": "^2.6.0",
     "x-tag-imports": "x-tag/x-tag-imports",
-    "core-ajax": "Polymer/core-ajax#~0.5.5",
-    "polymer-ui-card": "Polymer/polymer-ui-card#~0.3.0",
-    "core-drawer-panel": "Polymer/core-drawer-panel#~0.5.5",
-    "core-header-panel": "Polymer/core-header-panel#~0.5.5",
-    "core-toolbar": "Polymer/core-toolbar#~0.5.5",
-    "paper-button": "Polymer/paper-button#~0.5.5",
-    "core-menu": "Polymer/core-menu#~0.5.5",
-    "paper-item": "Polymer/paper-item#~0.5.5",
-    "core-icons": "Polymer/core-icons#~0.5.5",
-    "core-pages": "Polymer/core-pages#~0.5.5",
-    "bootstrap": "~3.3.2",
-    "page-er": "~0.0.6"
+    "core-ajax": "Polymer/core-ajax#^0.5.5",
+    "polymer-ui-card": "Polymer/polymer-ui-card#^0.3.0",
+    "core-drawer-panel": "Polymer/core-drawer-panel#^0.5.5",
+    "core-header-panel": "Polymer/core-header-panel#^0.5.5",
+    "core-toolbar": "Polymer/core-toolbar#^0.5.5",
+    "paper-button": "Polymer/paper-button#^0.5.5",
+    "core-menu": "Polymer/core-menu#^0.5.5",
+    "paper-item": "Polymer/paper-item#^0.5.5",
+    "core-icons": "Polymer/core-icons#^0.5.5",
+    "core-pages": "Polymer/core-pages#^0.5.5",
+    "bootstrap": "^3.3.2",
+    "page-er": "^0.0.6",
+    "more-routing": "Polymore/more-routing#~0.5.0"
   },
   "resolutions": {
     "core-component-page": "^0.5",
-    "polymer": "~0.5.5",
-    "core-ajax": "~0.5.5",
+    "polymer": "^0.5.5",
+    "core-ajax": "^0.5.5",
     "core-icon": "^0.5",
     "core-iconset": "^0.5",
     "core-meta": "^0.5",
     "core-iconset-svg": "^0.5",
-    "paper-button": "~0.5.5",
+    "paper-button": "^0.5.5",
     "paper-ripple": "^0.5",
     "font-roboto": "^0.5",
     "paper-shadow": "^0.5",
-    "core-icons": "~0.5.5"
+    "core-icons": "^0.5.5"
+  },
+  "devDependencies": {
+    "paper-checkbox": "Polymer/paper-checkbox#~0.5.5",
+    "core-label": "Polymer/core-label#~0.5.5",
+    "paper-radio-group": "Polymer/paper-radio-group#~0.5.5"
   }
 }

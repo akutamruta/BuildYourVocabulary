@@ -9,6 +9,7 @@
 			to: 100,
 			count : 1,
 			randomNumbers: [],
+			excludes : [],
 			wholeNumber : true,
 
 			UPPER_LIMIT : 1000,
@@ -17,6 +18,15 @@
 
 				this.generateRandomNumbers();
 
+			},
+
+			present : function(number) {
+				for(var i = 0;i < this.excludes.length ; i++) {
+					if(number == this.excludes[i])
+						return true;
+				}
+
+				return false;					
 			},
 
 			validateInput : function () {
@@ -42,59 +52,36 @@
 
 				var generateRandomNumbers = false, i, number, multiplier = 1, randomNumber = -1;
 
-				generateRandomNumbers = this.validateInput();
 
-				multiplier = this.getMultiplier();
+
+				generateRandomNumbers = this.validateInput();
 
 				if(generateRandomNumbers == true) {
 
 					for (i=0 ; i < this.count ; i++) {
+						
+						randomNumberGenerated = false;
 
-						/*if(this.wholeNumber == true)
-							randomNumber = Math.floor(Math.random() * this.to);
-						else
-							randomNumber = Math.random() * this.to;
-
-						if(randomNumber != -1) {
-							// constrain the generated number in the range
-							if(randomNumber < this.from) {
-
-								randomNumber = Math.floor(randomNumber + Math.random() * (this.to - this.from));
-
-							}*/
-
-							console.log(this.from, this.to);
+						while(randomNumberGenerated == false) {
 							randomNumber = (Math.random() * (this.to - this.from)) + this.from;
 							if(this.wholeNumber == true) {
 								randomNumber = Math.floor(randomNumber);
 							}
 							
+							if(!this.present(randomNumber)) {
+								this.randomNumbers[i] = randomNumber;	
+								randomNumberGenerated = true;
+							}
 
-							this.randomNumbers[i] = randomNumber;
-						//}
+						}
 					}
 
-					console.log(this.randomNumbers);
+					this.asyncFire('list-initialized');
 				}
 				else {
 					console.warn('Please specify the number of random numbers to be generated using the count attribute');
 				}
 
-			},
-
-			getMultiplier : function() {
-				if(this.to<= 1) {
-					return 1;
-				}
-				else if(this.to/10 <= 1) {
-					return 10;
-				}
-				else if(this.to/100 <= 1) {
-					return 100;
-				}
-				else if(this.to/1000 <= 1) {
-					return 1000;
-				}
 			}
 		});
 

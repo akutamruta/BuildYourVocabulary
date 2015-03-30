@@ -21,7 +21,6 @@ To test it, visit https://buildyourvocabulary.appspot.com/ .
 
 #To-Do
 - Add test section
-- Incorporate routing
 - Incorporate testing (using chai, mocha, karma etc.)
 - Include the service worker polyfill
 

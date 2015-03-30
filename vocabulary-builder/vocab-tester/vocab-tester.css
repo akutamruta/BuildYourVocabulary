@@ -1,0 +1,42 @@
+paper-checkbox::shadow #ink[checked] {
+  color: blue;
+}
+
+paper-radio-button::shadow #onRadio {
+  background-color: blue;
+}
+
+#holder {
+	/*width: 100%;*/
+	/*position: absolute;*/
+	margin : 20px;
+	/*height: 100px;*/
+}
+
+#previous {
+	
+	/*width : 30px;
+	height: 30px;*/
+	position: relative;
+	float: left;
+	background-color: lightslategrey;
+	color: white;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+#next {
+	
+	/*width : 30px;
+	height: 30px;*/
+	position: relative;
+	right: 0px;
+	background-color: lightslategrey;
+	color: white;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+#navigate {
+	padding-top: 20px;
+}
