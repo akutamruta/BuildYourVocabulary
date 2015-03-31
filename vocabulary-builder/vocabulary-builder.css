@@ -17,7 +17,8 @@ div.welcome {
 }
 
 #welcomeToolbar {
-  background-color: #AD66D5;
+  /*background-color: #AD66D5;*/
+  background-color: #8E8C8F;
   color: white;
   padding: 16px 0px 16px 22px;
   font-size: xx-large;
@@ -25,7 +26,8 @@ div.welcome {
 }
 
 #mainToolbar {
-  background-color: #8E8C8F;
+  /*background-color: #8E8C8F;*/
+  background-color: #AD66D5;
   color: white;
   padding: 16px 0px 16px 22px;
   font-size: xx-large;

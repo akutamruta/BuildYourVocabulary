@@ -9,6 +9,7 @@ Polymer('vocab-tester', {
 	wrongMeaningIndices : [],
 	questionaire : [],
 	questionNumber : 0,
+	noOfCorrectAnswers : 0,
 
 	ready : function () {
 		this.$.previous.disabled = true;
@@ -101,6 +102,23 @@ Polymer('vocab-tester', {
 			this.generateSubWordList();
 			this.$.randomNumberGenerator3.generateRandomNumbers();
 		}
+	},
+
+	commitTest : function() {
+		this.noOfCorrectAnswers = 0;
+
+		for(var i = 0; i< this.count; i++) {
+			if(this.correctMeaningIndices[i].toString() == this.questionaire[i].selected) {
+				this.noOfCorrectAnswers++;
+				
+			}
+		}
+		this.$.coreOverlay.open();
+		console.log(this.noOfCorrectAnswers);
+	},
+
+	closeOverlay : function() {
+		this.$.coreOverlay.close();
 	}
 });
 
