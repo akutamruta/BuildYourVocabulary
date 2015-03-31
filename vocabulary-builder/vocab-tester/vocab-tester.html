@@ -42,27 +42,28 @@
 			
 			<div id="navigate" horizontal layout justified>
 				<paper-button id="previous" on-click="{{ setPreviousWord }}">Prev</paper-button>
-				<!-- <template bind if="{{ questionNumber == count -1 }}"> -->
+				<template bind if="{{ questionNumber == count -1 }}">
 					<paper-button id="commit" on-click="{{ commitTest }}">Commit</paper-button>
-				<!-- </template>	 -->
+				</template>	
 				<paper-button id="next" on-click="{{ setNextWord }}">Next</paper-button>
 			</div>
 		</div>
 
-		<!-- <div id="results" > -->
-		<core-overlay id="coreOverlay" backdrop layered>
-			
+		
+		<core-overlay id="coreOverlay" backdrop layered autoCloseDisabled="true">
+			<link rel="stylesheet" href="results.css" />
+			<div id="results" layout vertical center flex>	
 				<h2>Results</h2>
-				<h1>
+				<h1 id="resultHeader">
 					{{noOfCorrectAnswers}}/{{count}}
 				</h1>
-				<div layout horizontal flex>
-					<paper-button id="tryAgain" class="testerPageButtons">Try Again</paper-button>
+				<div layout horizontal>
+					<paper-button id="tryAgain" class="testerPageButtons" on-click="{{ reload }}">Try Again</paper-button>
 					<paper-button id="close" class="testerPageButtons" on-click="{{ closeOverlay }}">Close</paper-button>
 				</div>
-			
+			<div>	
 		</core-overlay>
-		<!-- <div> -->
+		
 
 	</template>
 

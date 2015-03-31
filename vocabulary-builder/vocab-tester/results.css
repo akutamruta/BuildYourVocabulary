@@ -1,0 +1,33 @@
+
+#results {
+	background-color: white;
+	padding: 20px;
+	border-style: double;
+	border-color: lightslategrey;
+	border-width: thick;
+}
+
+.testerPageButtons {
+	background-color: lightslategrey;
+	color: white;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+h2 {
+	color : lightslategrey;
+}
+
+h1.poor {
+	color : red;
+}
+
+h1.medium {
+	color : orange;
+}
+
+h1.good {
+	color : green;
+}
+
+

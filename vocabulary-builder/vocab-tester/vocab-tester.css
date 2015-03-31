@@ -43,18 +43,8 @@ paper-radio-button::shadow #onRadio {
 
 #commit {
 	background-color: green;
+	color : yellow;
 }
 
-.testerPageButtons {
-	/*position: relative;
-	float: left;*/
-	background-color: lightslategrey;
-	color: white;
-	font-weight: bold;
-	font-family: sans-serif;
-}
 
-body /deep/ core-overlay {
-	background-color: white;
-	padding: 20px;
-}
+

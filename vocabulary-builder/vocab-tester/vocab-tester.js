@@ -110,15 +110,25 @@ Polymer('vocab-tester', {
 		for(var i = 0; i< this.count; i++) {
 			if(this.correctMeaningIndices[i].toString() == this.questionaire[i].selected) {
 				this.noOfCorrectAnswers++;
-				
 			}
 		}
+
+		if(this.noOfCorrectAnswers < 0.4 * this.count)
+			this.$.resultHeader.className = "poor";
+		else if(this.noOfCorrectAnswers < 0.8 * this.count)
+			this.$.resultHeader.className = "medium";
+		else
+			this.$.resultHeader.className = "good";
+
 		this.$.coreOverlay.open();
-		console.log(this.noOfCorrectAnswers);
 	},
 
 	closeOverlay : function() {
 		this.$.coreOverlay.close();
+	},
+
+	reload : function () {
+		location.reload();
 	}
 });
 
