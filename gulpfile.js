@@ -59,5 +59,14 @@ gulp.task('vulcanize', function() {
 
 });
 
+gulp.task('auto', function () {
+    return gulp.src('**/*.css')
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('dist'));
+});
+
 gulp.task('default',['browser-sync'])
 
